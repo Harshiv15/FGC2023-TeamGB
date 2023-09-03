@@ -15,6 +15,9 @@
 apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
+
 android {
     namespace = 'org.firstinspires.ftc.teamcode'
 
@@ -23,7 +26,25 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url = 'https://maven.brott.dev/'
+    }
+}
+
 dependencies {
     implementation project(':FtcRobotController')
+    implementation 'androidx.core:core-ktx:+'
     annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
+    annotationProcessor "com.github.amarcolini.joos.command:annotation:0.4.8"
+
+    implementation 'com.acmerobotics.dashboard:dashboard:0.4.10'
+    implementation 'com.acmerobotics.roadrunner:core:1.0.0-beta1'
+    implementation 'com.acmerobotics.roadrunner:actions:1.0.0-beta1'
+    implementation 'org.ftclib.ftclib:core:2.1.1' // core
+
+    api 'org.openftc:easyopencv:1.7.0'
+    implementation 'org.openftc:apriltag:2.0.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
 }
